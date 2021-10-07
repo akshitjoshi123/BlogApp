@@ -1,6 +1,7 @@
 from django.db import models
+from django.db.models import fields
 from rest_framework import serializers
-from articles.models import Article
+from articles.models import Article, Categories
 
 
 class ArticleCreateSerializer(serializers.ModelSerializer):
@@ -15,3 +16,9 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ['title', 'author_name', 'content', 'category', 'image']
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Categories
+        fields = ['title', 'image']
