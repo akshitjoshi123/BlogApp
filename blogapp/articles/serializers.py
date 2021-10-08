@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import fields
 from rest_framework import serializers
-from articles.models import Article, Categories
+from articles.models import Article, Categories, Comment
 
 
 class ArticleCreateSerializer(serializers.ModelSerializer):
@@ -22,3 +22,20 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Categories
         fields = ['title', 'image']
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    article = serializers.PrimaryKeyRelatedField(queryset=Article.objects.filter(status='publish'))
+
+    class Meta:
+        model = Comment
+        fields = ['article', 'comment']
+
+
+class CommentListSerializer(serializers.ModelSerializer):
+    article_name = serializers.CharField(source='article.title')
+
+    class Meta:
+        model = Comment
+        fields = ['name', 'article_name', 'comment']
+

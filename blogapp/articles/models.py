@@ -31,9 +31,10 @@ class Article(models.Model):
 
 class Comment(models.Model):
     """comment model to comment a message on article"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20, default='Anonymous Users')
+    
 
     def __str__(self):
-        return self.user
+        return self.name
