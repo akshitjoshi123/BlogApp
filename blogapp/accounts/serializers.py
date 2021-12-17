@@ -31,7 +31,7 @@ class CustomUserDetailsSerializer(serializers.ModelSerializer):
             'role',
             'description',
         )
-        read_only_fields = ('pk', 'username', 'email', 'first_name', 'last_name')
+        read_only_fields = ('pk', 'username', 'email')
 
 
 class ChangePasswordSerializer(serializers.Serializer):

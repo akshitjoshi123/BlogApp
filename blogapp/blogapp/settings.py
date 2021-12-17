@@ -99,6 +99,8 @@ WSGI_APPLICATION = 'blogapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': environ.get('ENGINE'),
@@ -107,16 +109,6 @@ DATABASES = {
         'PASSWORD': environ.get('PASSWORD'),
         'HOST': environ.get('HOST'),
         'PORT': environ.get('PORT'),
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogapp',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost'
     }
 }
 
@@ -174,4 +166,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
